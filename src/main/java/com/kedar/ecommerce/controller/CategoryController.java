@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.kedar.ecommerce.domain.Category;
 import com.kedar.ecommerce.repo.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +17,11 @@ public class CategoryController {
     @Autowired
     public CategoryController(CategoryRepository categoryRepository){
         this.categoryRepository = categoryRepository;
+    }
+
+    @GetMapping("/sample")
+    public String helloWorld(){
+        return "Hello World";
     }
 
 
