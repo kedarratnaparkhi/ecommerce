@@ -1,0 +1,16 @@
+version: '3'
+services:
+  postgres:
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ./create_DB.sql:/docker-entrypoint-initdb.d/schema.sql
+  ecommerce:
+    image: ecommerce
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgres
