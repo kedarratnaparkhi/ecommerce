@@ -1,7 +1,6 @@
 package com.kedar.ecommerce.domain;
 
 import lombok.Builder;
-import org.hibernate.criterion.Order;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -15,7 +14,7 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String registeredName;
+    private String name;
 
     private Double price;
 
@@ -32,7 +31,7 @@ public class Product {
                                 inverseJoinColumns=@JoinColumn(name="prod_id", referencedColumnName="id"))
     private List<Supplier> suppliers;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Category category;
+    @Enumerated(EnumType.STRING)
+    private Supplier.SupplierType category;
 }
 

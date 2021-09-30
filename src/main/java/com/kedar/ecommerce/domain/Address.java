@@ -54,6 +54,7 @@ public class Address {
 
     public enum AddressType{
         SHIPPING,
-        BILLING;
+        BILLING,
+        BUSINESS_REG;
     }
 }
