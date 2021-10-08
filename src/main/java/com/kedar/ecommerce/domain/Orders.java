@@ -1,6 +1,7 @@
 package com.kedar.ecommerce.domain;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -10,10 +11,12 @@ import java.util.List;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Orders {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "orders_seq")
+    @SequenceGenerator(name = "orders_seq", initialValue = 1, sequenceName = "orders_seq")
     private Long id;
 
     private Double order_total;
@@ -34,8 +37,11 @@ public class Orders {
     @ManyToOne
     private Customer customer;
 
+    @OneToOne
+    private Address address;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "order_id", referencedColumnName = "id")
     private List<OrderDetail> orderDetails;
 
     public Long getId() {
@@ -106,8 +112,16 @@ public class Orders {
         return orderDetails;
     }
 
-    public void setOrderDetails(List<OrderDetail> orderDetails) {
+    private void setOrderDetails(List<OrderDetail> orderDetails) {
         this.orderDetails = orderDetails;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     public enum PaymentMethod{

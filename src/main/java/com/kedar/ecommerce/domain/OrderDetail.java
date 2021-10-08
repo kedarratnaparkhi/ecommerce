@@ -9,12 +9,18 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class OrderDetail {
+    public OrderDetail(Product product, Integer quantity, Double discount) {
+        this.product = product;
+        this.quantity = quantity;
+        this.discount = discount;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @ManyToOne
+    @JoinColumn(name = "order_id", referencedColumnName = "id")
     private Orders order;
 
     @OneToOne
