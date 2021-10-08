@@ -21,4 +21,9 @@ public class OrdersService {
             throw new DataValidationException("Invalid Order with no Order details");
         return ordersRepository.save(order);
     }
+
+    public Boolean updateDiscount(){
+        //todo: implement updateDiscount method
+        return null;
+    }
 }

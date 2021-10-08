@@ -30,7 +30,7 @@ public class Product {
 
     private Integer stock;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "PROD_SUPP", joinColumns = @JoinColumn(name="supp_id", referencedColumnName = "id"),
                                 inverseJoinColumns=@JoinColumn(name="prod_id", referencedColumnName="id"))
     private List<Supplier> suppliers;
