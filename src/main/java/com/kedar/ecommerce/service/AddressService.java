@@ -34,4 +34,8 @@ public class AddressService {
         List<Address> addressList = addressRepository.findByPostCode(postCode);
         return addressList;
     }
+
+    public List<Address> findAll(){
+        return (List<Address>) addressRepository.findAll();
+    }
 }
