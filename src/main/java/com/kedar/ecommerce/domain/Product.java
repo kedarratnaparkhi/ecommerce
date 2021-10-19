@@ -15,7 +15,8 @@ import java.util.List;
 public class Product {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PROD_SEQ")
+    @SequenceGenerator(name = "PROD_SEQ", sequenceName = "PROD_SEQ", initialValue = 1001)
     private Long id;
 
     private String name;
@@ -30,9 +31,9 @@ public class Product {
 
     private Integer stock;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinTable(name = "PROD_SUPP", joinColumns = @JoinColumn(name="supp_id", referencedColumnName = "id"),
-                                inverseJoinColumns=@JoinColumn(name="prod_id", referencedColumnName="id"))
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "PROD_SUPP", joinColumns = @JoinColumn(name="prod_id", referencedColumnName = "id"),
+                                inverseJoinColumns=@JoinColumn(name="supp_id", referencedColumnName="id"))
     private List<Supplier> suppliers;
 
     @Enumerated(EnumType.STRING)

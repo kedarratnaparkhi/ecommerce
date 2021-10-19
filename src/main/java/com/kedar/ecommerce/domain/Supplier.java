@@ -1,18 +1,21 @@
 package com.kedar.ecommerce.domain;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class Supplier {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SUPP_SEQ")
+    @SequenceGenerator(name = "SUPP_SEQ", sequenceName = "SUPP_SEQ", initialValue = 1001)
     private Long id;
 
     private String companyName;
@@ -21,14 +24,16 @@ public class Supplier {
 
     private String contactNumber;
 
-    private Long addressId;
+    @OneToOne
+    private Address address;
 
     @Enumerated(EnumType.STRING)
     private SupplierType type;
 
     private String currency;
 
-    @ManyToMany(mappedBy = "suppliers", fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "suppliers")
+    //@JoinTable( name = "PROD_SUPP")
     private List<Product> products;
 
     public Long getId() {
@@ -63,14 +68,6 @@ public class Supplier {
         this.contactNumber = contactNumber;
     }
 
-    public Long getAddressId() {
-        return addressId;
-    }
-
-    public void setAddressId(Long addressId) {
-        this.addressId = addressId;
-    }
-
     public SupplierType getType() {
         return type;
     }
@@ -93,6 +90,14 @@ public class Supplier {
 
     public void setProducts(List<Product> products) {
         this.products = products;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     public enum SupplierType{
