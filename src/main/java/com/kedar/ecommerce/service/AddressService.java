@@ -25,7 +25,7 @@ public class AddressService {
 
         if(!findByPostCode(addressObj.getPostCode()).isEmpty())
             throw new DataValidationException("Postcode already in use");
-        if(!addressObj.getLine_1().contains("street") && !addressObj.getLine_1().contains("road"))
+        if(!addressObj.getLine_1().toUpperCase().contains("STREET") && !addressObj.getLine_1().toUpperCase().contains("ROAD"))
             throw new DataValidationException("Data in Line 1 incomplete");
         return addressRepository.save(addressObj);
     }
