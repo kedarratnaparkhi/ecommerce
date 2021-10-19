@@ -37,7 +37,6 @@ public class AddressServiceTest {
                         .county(Address.County.KA)
                         .line_1("henry street")
                         .line_2("")
-                        .customer(customer.get())
                         .postCode("411023").build();
 
         Assertions.assertThat(addressService.save(address).getId()).isNotNull();

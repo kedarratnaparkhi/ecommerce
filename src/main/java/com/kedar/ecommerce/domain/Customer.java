@@ -27,7 +27,7 @@ public class Customer {
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(fetch = FetchType.LAZY)
     private List<Address> addresses;
 
     @OneToMany(mappedBy = "customer")

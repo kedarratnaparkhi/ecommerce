@@ -34,8 +34,8 @@ public class Address {
     @Enumerated(EnumType.STRING)
     private AddressType type;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Customer customer;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    private Customer customer;
 
     public Long getId() {
         return id;
@@ -99,14 +99,6 @@ public class Address {
 
     public void setType(AddressType type) {
         this.type = type;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
     }
 
     public enum City{
