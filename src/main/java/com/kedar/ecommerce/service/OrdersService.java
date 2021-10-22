@@ -26,4 +26,8 @@ public class OrdersService {
         //todo: implement updateDiscount method
         return null;
     }
+
+    public Orders findById(Long ordersId){
+        return ordersRepository.findById(ordersId).get();
+    }
 }
