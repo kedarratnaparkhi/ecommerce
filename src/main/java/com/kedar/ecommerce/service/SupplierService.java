@@ -5,6 +5,8 @@ import com.kedar.ecommerce.repo.SupplierRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SupplierService {
 
@@ -21,6 +23,14 @@ public class SupplierService {
 
     public Supplier save(Supplier supplier){
         return supplierRepository.save(supplier);
+    }
+
+    public List<Supplier> findAll(){
+        return (List<Supplier>) supplierRepository.findAll();
+    }
+
+    public Long count(){
+        return supplierRepository.count();
     }
 
 }
