@@ -19,9 +19,9 @@ public class OrderDetail {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "order_id", referencedColumnName = "id")
-    private Orders order;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "order_id", referencedColumnName = "id")
+//    private Orders order;
 
     @OneToOne
     private Product product;
@@ -38,13 +38,13 @@ public class OrderDetail {
         this.id = id;
     }
 
-    public Orders getOrder() {
-        return order;
-    }
-
-    public void setOrder(Orders order) {
-        this.order = order;
-    }
+//    public Orders getOrder() {
+//        return order;
+//    }
+//
+//    public void setOrder(Orders order) {
+//        this.order = order;
+//    }
 
     public Product getProduct() {
         return product;

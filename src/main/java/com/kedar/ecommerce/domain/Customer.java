@@ -30,7 +30,7 @@ public class Customer {
     @OneToMany(fetch = FetchType.LAZY)
     private List<Address> addresses;
 
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
     private List<Orders> orders;
 
     private String email;
