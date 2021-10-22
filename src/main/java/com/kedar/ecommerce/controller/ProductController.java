@@ -28,7 +28,7 @@ public class ProductController {
     }
 
     @GetMapping(path = "/{id}")
-    public Product getproductByPostCode(@PathVariable Long id){
+    public Product getproductById(@PathVariable Long id){
         return productService.findById(id);
     }
 
