@@ -36,7 +36,9 @@ public class AdvancedWebSecurity extends WebSecurityConfigurerAdapter {
                 .antMatchers("/customer/**").hasRole("ADMIN")
                 .antMatchers("/address/**").hasAnyRole("USER")
                 .antMatchers("/").permitAll()
-                .and().httpBasic();
+                .and().httpBasic()
+                .and().cors()
+                .and().csrf().disable();
     }
 
 
