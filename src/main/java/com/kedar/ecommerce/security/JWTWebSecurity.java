@@ -9,7 +9,7 @@
 //import org.springframework.security.crypto.password.PasswordEncoder;
 //
 ////@EnableWebSecurity
-//public class BasicWebSecurity extends WebSecurityConfigurerAdapter {
+//public class JWTWebSecurity extends WebSecurityConfigurerAdapter {
 //
 //    /*
 //    Learned from Tutorials:
@@ -17,22 +17,12 @@
 //    https://www.youtube.com/watch?v=payxWrmF_0k
 //    * */
 //
-//    //This is the AUTHENTICATION part
-//    @Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.inMemoryAuthentication()
-//                .withUser("kedar")
-//                .password("kedar")
-//                .roles("USER", "EXTRA_ROLE")
-//                .and()
-//                .withUser("admin")
-//                .password("admin")
-//                .roles("ADMIN");
+//
+//    @Override protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//
 //    }
 //
-//    //This is the AUTHORIZATION part
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
+//    @Override protected void configure(HttpSecurity http) throws Exception {
 //        http.authorizeRequests()
 //                .antMatchers("/customer/**").hasRole("ADMIN")
 //                .antMatchers("/address/**").hasRole("USER")
