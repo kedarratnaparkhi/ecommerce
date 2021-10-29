@@ -40,15 +40,15 @@ public class SupplierServiceTest {
         Assertions.assertThat(supplierService.save(supplier).getId()).isNotNull();
     }
 
-    @Test
-    @Transactional
-    public void fetchSupplier(){
-        Long supplierId = 6L;
-
-        Supplier supplier = supplierService.findById(supplierId);
-
-        Assertions.assertThat(supplier.getProducts()).isNotEmpty();
-
-    }
+//    @Test
+//    @Transactional
+//    public void fetchSupplier(){
+//        Long supplierId = 6L;
+//
+//        Supplier supplier = supplierService.findById(supplierId);
+//
+//        Assertions.assertThat(supplier.getProducts()).isNotEmpty();
+//
+//    }
 
 }

@@ -1,6 +1,7 @@
 package com.kedar.ecommerce.controller;
 
 import com.google.gson.Gson;
+import com.kedar.ecommerce.TO.SupplierTO;
 import com.kedar.ecommerce.domain.Supplier;
 import com.kedar.ecommerce.service.SupplierService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,12 +26,12 @@ public class SupplierController {
     }
 
     @GetMapping("/")
-    public List<Supplier> getAllSuppliers(){
+    public List<SupplierTO> getAllSuppliers(){
         return supplierService.findAll();
     }
 
     @GetMapping("/{id}")
-    public Supplier getSupplierById(@PathVariable Long id){
+    public SupplierTO getSupplierById(@PathVariable Long id){
         return supplierService.findById(id);
     }
 
@@ -41,11 +42,11 @@ public class SupplierController {
         return supplierService.save(supplierToBeSaved);
     }
 
-    @GetMapping("/sample")
-    public ResponseEntity<List<Supplier>> sampleFunc(){
-        HttpHeaders httpHeaders = new HttpHeaders();
-        List<Supplier> supplierList = supplierService.findAll();
-        httpHeaders.add("Count", supplierList.size()+"");
-        return new ResponseEntity<>(supplierList, httpHeaders, HttpStatus.OK);
-    }
+//    @GetMapping("/sample")
+//    public ResponseEntity<List<Supplier>> sampleFunc(){
+//        HttpHeaders httpHeaders = new HttpHeaders();
+//        List<Supplier> supplierList = supplierService.findAll();
+//        httpHeaders.add("Count", supplierList.size()+"");
+//        return new ResponseEntity<>(supplierList, httpHeaders, HttpStatus.OK);
+//    }
 }

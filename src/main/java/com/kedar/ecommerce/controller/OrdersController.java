@@ -2,6 +2,9 @@ package com.kedar.ecommerce.controller;
 
 import com.google.gson.Gson;
 import com.kedar.ecommerce.Exception.DataValidationException;
+import com.kedar.ecommerce.TO.Mapper;
+import com.kedar.ecommerce.TO.OrderDetailTO;
+import com.kedar.ecommerce.TO.OrdersTO;
 import com.kedar.ecommerce.domain.OrderDetail;
 import com.kedar.ecommerce.domain.Orders;
 import com.kedar.ecommerce.service.OrdersService;
@@ -9,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("order")
@@ -24,7 +28,7 @@ public class OrdersController {
     Gson gson = new Gson();
 
     @GetMapping(path = "/{orderId}")
-    public Orders getOrderById(@PathVariable Long orderId){
+    public OrdersTO getOrderById(@PathVariable Long orderId){
 
         return orderService.findById(orderId);
     }
@@ -38,9 +42,9 @@ public class OrdersController {
     }
 
     @GetMapping(path = "/orderDetails/{orderId}")
-    public List<OrderDetail> getOrderDetailsById(@PathVariable Long orderId){
+    public List<OrderDetailTO> getOrderDetailsById(@PathVariable Long orderId){
 
-        List<OrderDetail> orderDetailList = orderService.findById(orderId).getOrderDetails();
-        return orderDetailList;
+        return orderService.findOrderDetailsById(orderId).stream().map(orderDetail -> Mapper.toOrderDetailTO(orderDetail)).collect(
+                Collectors.toList());
     }
 }

@@ -24,39 +24,39 @@ public class ProductServiceTest {
     @Autowired
     SupplierService supplierService;
 
-    @Test
-    public void saveProductTest(){
-        Product product = Product.builder()
-                                .category(Supplier.SupplierType.ELECTRONICS)
-                                .createDate(new Date())
-                                .description("THis is a test description")
-                                .name("Prod 1")
-                                .price(200.00)
-                                .stock(100)
-                                .suppliers(getExistingSupplier())
-                                .weight(20.99).build();
+//    @Test
+//    public void saveProductTest(){
+//        Product product = Product.builder()
+//                                .category(Supplier.SupplierType.ELECTRONICS)
+//                                .createDate(new Date())
+//                                .description("THis is a test description")
+//                                .name("Prod 1")
+//                                .price(200.00)
+//                                .stock(100)
+//                                .suppliers(getExistingSupplier())
+//                                .weight(20.99).build();
+//
+//        productService.saveProduct(product);
+//    }
 
-        productService.saveProduct(product);
-    }
+//    private List<Supplier> getExistingSupplier(){
+//        List<Supplier> supplierList = new ArrayList<>();
+//        supplierList.add(supplierService.findById(1L));
+//        supplierList.add(supplierService.findById(2L));
+//        supplierList.add(supplierService.findById(5L));
+//        supplierList.add(supplierService.findById(6L));
+//
+//        return supplierList;
+//    }
 
-    private List<Supplier> getExistingSupplier(){
-        List<Supplier> supplierList = new ArrayList<>();
-        supplierList.add(supplierService.findById(1L));
-        supplierList.add(supplierService.findById(2L));
-        supplierList.add(supplierService.findById(5L));
-        supplierList.add(supplierService.findById(6L));
-
-        return supplierList;
-    }
-
-    @Test
-    @Transactional
-    public void fetchProducts(){
-        Long productId = 1552L;
-
-        Product product = productService.findById(productId);
-
-        Assertions.assertThat(product.getSuppliers()).isNotEmpty();
-    }
+//    @Test
+//    @Transactional
+//    public void fetchProducts(){
+//        Long productId = 1552L;
+//
+//        Product product = productService.findById(productId);
+//
+//        Assertions.assertThat(product.getSuppliers()).isNotEmpty();
+//    }
 
 }

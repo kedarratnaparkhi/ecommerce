@@ -2,6 +2,7 @@ package com.kedar.ecommerce.controller;
 
 import com.google.gson.Gson;
 import com.kedar.ecommerce.Exception.DataValidationException;
+import com.kedar.ecommerce.TO.AddressTO;
 import com.kedar.ecommerce.domain.Address;
 import com.kedar.ecommerce.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,7 @@ public class AddressController {
 
 
     @PostMapping("/add")
-    public Address addAddress(@RequestBody String requestBody) throws DataValidationException {
+    public AddressTO addAddress(@RequestBody String requestBody) throws DataValidationException {
         Address addressToBeSaved = gson.fromJson(requestBody, Address.class);
         return addressService.save(addressToBeSaved);
     }

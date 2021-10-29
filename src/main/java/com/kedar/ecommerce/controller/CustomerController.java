@@ -2,6 +2,7 @@ package com.kedar.ecommerce.controller;
 
 import com.google.gson.Gson;
 import com.kedar.ecommerce.Exception.DataValidationException;
+import com.kedar.ecommerce.TO.CustomerTO;
 import com.kedar.ecommerce.domain.Customer;
 import com.kedar.ecommerce.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,7 @@ public class CustomerController {
     }
 
     @GetMapping(path = "/{firstName}")
-    public List<Customer> getCustomerByFirstName(@PathVariable String firstName){
+    public List<CustomerTO> getCustomerByFirstName(@PathVariable String firstName){
         return customerService.findByFirstName(firstName);
     }
 

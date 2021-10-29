@@ -1,6 +1,8 @@
 package com.kedar.ecommerce.service;
 
 import com.kedar.ecommerce.Exception.DataValidationException;
+import com.kedar.ecommerce.TO.AddressTO;
+import com.kedar.ecommerce.TO.Mapper;
 import com.kedar.ecommerce.domain.Address;
 import com.kedar.ecommerce.repo.AddressRepository;
 import com.kedar.ecommerce.repo.CustomerRepository;
@@ -21,13 +23,13 @@ public class AddressService {
         this.customerRepository = customerRepository;
     }
 
-    public Address save(Address addressObj) throws DataValidationException {
+    public AddressTO save(Address addressObj) throws DataValidationException {
 
         if(!findByPostCode(addressObj.getPostCode()).isEmpty())
             throw new DataValidationException("Postcode already in use");
         if(!addressObj.getLine_1().toUpperCase().contains("STREET") && !addressObj.getLine_1().toUpperCase().contains("ROAD"))
             throw new DataValidationException("Data in Line 1 incomplete");
-        return addressRepository.save(addressObj);
+        return Mapper.toAddressTO(addressRepository.save(addressObj));
     }
 
     public List<Address> findByPostCode(String postCode){

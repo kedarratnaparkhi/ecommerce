@@ -2,6 +2,7 @@ package com.kedar.ecommerce.controller;
 
 import com.google.gson.Gson;
 import com.kedar.ecommerce.Exception.DataValidationException;
+import com.kedar.ecommerce.TO.ProductTO;
 import com.kedar.ecommerce.domain.Product;
 import com.kedar.ecommerce.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,12 +24,12 @@ public class ProductController {
     Gson gson = new Gson();
 
     @GetMapping(path = "/")
-    public List<Product> getAllProducts(){
+    public List<ProductTO> getAllProducts(){
         return productService.findAll();
     }
 
     @GetMapping(path = "/{id}")
-    public Product getproductById(@PathVariable Long id){
+    public ProductTO getproductById(@PathVariable Long id){
         return productService.findById(id);
     }
 
