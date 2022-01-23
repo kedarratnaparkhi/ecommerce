@@ -8,9 +8,16 @@ services:
       - POSTGRES_PASSWORD=postgres
     volumes:
       - ./create_DB.sql:/docker-entrypoint-initdb.d/schema.sql
+    networks:
+      - abcd
   ecommerce:
-    image: ecommerce
+    image: ecommerce:1.0
     ports:
       - 8080:8080
     depends_on:
       - postgres
+    networks:
+      - abcd
+networks:
+  abcd:
+    driver: bridge
