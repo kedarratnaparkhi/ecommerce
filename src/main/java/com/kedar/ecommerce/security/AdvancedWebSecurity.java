@@ -34,7 +34,7 @@ public class AdvancedWebSecurity extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/customer/**").hasRole("ADMIN")
-                .antMatchers("/address/**").hasAnyRole("USER")
+                //.antMatchers("/address/**").hasAnyRole("USER")
                 .antMatchers("/").permitAll()
                 .and().httpBasic()
                 .and().cors()
