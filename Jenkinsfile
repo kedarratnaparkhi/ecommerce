@@ -7,16 +7,20 @@ pipeline{
 
     stages{
         stage('build'){
-            //do stuff
+            steps{
+                echo 'inside build'
+            }
         }
         stage('something'){
-            //do other stuff
+            steps{
+                echo 'inside something'
+            }
         }
     }
 
     post{
         always{
-            //echo something
+            echo 'inside post'
         }
     }
 }
