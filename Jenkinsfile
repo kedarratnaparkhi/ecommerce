@@ -1,30 +1,22 @@
 pipeline{
 
     agent any
+    tools{
+        maven 'Maven'
+    }
 
     stages{
-
-        stage("build"){
-            steps{
-                echo 'building the application...'
-            }
+        stage('build'){
+            //do stuff
         }
-
-        stage("test"){
-            when{
-                expression{
-                    BRANCH_NAME=='master'
-                }
-            }
-            steps{
-                echo 'testing the application...'
-            }
+        stage('something'){
+            //do other stuff
         }
+    }
 
-        stage("deploy"){
-            steps{
-                echo 'deploying the application...'
-            }
+    post{
+        always{
+            //echo something
         }
     }
 }
