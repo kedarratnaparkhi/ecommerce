@@ -8,6 +8,8 @@ import com.kedar.ecommerce.TO.OrdersTO;
 import com.kedar.ecommerce.domain.OrderDetail;
 import com.kedar.ecommerce.domain.Orders;
 import com.kedar.ecommerce.service.OrdersService;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,8 +29,9 @@ public class OrdersController {
 
     Gson gson = new Gson();
 
+    @ApiOperation(value = "Get Orders By Id", notes="get orders",nickname = "getOrderById", response = Orders.class)
     @GetMapping(path = "/{orderId}")
-    public OrdersTO getOrderById(@PathVariable Long orderId){
+    public OrdersTO getOrderById(@PathVariable @ApiParam(value = "THis is the Order ID", required = true) Long orderId){
 
         return orderService.findById(orderId);
     }
